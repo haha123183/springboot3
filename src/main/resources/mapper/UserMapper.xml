@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.springboot3.mapper.UserMapper">
+    <select id="getAll" resultType="User">
+        select * from sys_user
+    </select>
+    <select id="getById" resultType="User">
+        SELECT * FROM sys_user WHERE id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_user(username, age, avatar, email, city, created, updated, last_login, status)
+        VALUES(#{username}, #{age}, #{avatar}, #{email}, #{city}, #{created}, #{updated}, #{lastLogin}, #{status})
+    </insert>
+
+    <update id="update">
+        UPDATE sys_user
+        SET username=#{username}, age=#{age}, avatar=#{avatar},
+            email=#{email}, city=#{city}, updated=#{updated},
+            last_login=#{lastLogin}, status=#{status}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM sys_user WHERE id = #{id}
+    </delete>
+
+</mapper>
